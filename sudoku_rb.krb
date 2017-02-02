@@ -1,0 +1,14 @@
+sudoku_not_completed:
+    foreach
+	sudoku.sudoku_solved($iteration, $no_of_cells_solved, $total_no_of_cells)
+	check $no_of_cells_solved != $total_no_of_cells
+    assert
+      sudoku.status($iteration, -1)
+
+
+sudoku_completed:
+  foreach
+    sudoku.sudoku_solved($iteration, $no_of_cells_solved, $total_no_of_cells)
+    check $no_of_cells_solved == $total_no_of_cells
+  assert
+    sudoku.status($iteration, 0)
